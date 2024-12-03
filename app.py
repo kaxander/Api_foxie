@@ -218,8 +218,6 @@ def updateCategoria(id):
         categoria = db_session.execute(categoria).scalar()
         if request.form['nome']:
             categoria.nome = request.form['nome']
-        if request.form['icone']:
-            categoria.email = request.form['icone']
         categoria.save()
         final = {
             'status': 'success',
@@ -263,6 +261,7 @@ def deleteCategoria(id):
         return Response(
             response=json.dumps(final)
         )
+
 
 #  pedro produto
 @app.route('/produtos', methods=['GET'])
@@ -318,10 +317,10 @@ def createProduto():
     try:
         produto = Produto(
             nome=request.form['nome'],
-            preco=request.form['preco'],
+            preco=float(request.form['preco']),
             descricao=request.form['descricao'],
             imagem=request.form['imagem'],
-            categoria_id=request.form['categoria_id']
+            categoria_id=int(request.form['categoria_id'])
         )
         produto.save()
         final = {
@@ -556,7 +555,7 @@ def createIngrediente():
     try:
         ingrediente = Ingrediente(
             nome=request.form['nome'],
-            produto_id=request.form['produto_id'],
+            produto_id=int(request.form['produto_id']),
         )
         ingrediente.save()
         final = {
@@ -684,7 +683,7 @@ def createPedido():
             mesa=request.form['mesa'],
             status=request.form['status'],
             dataCriado=request.form['dataCriado'],
-            funcionario_id=request.form['funcionario_id'],
+            funcionario_id=int(request.form['funcionario_id']),
 
         )
         pedido.save()
@@ -692,7 +691,7 @@ def createPedido():
             'status': 'success',
             'message': 'Pedido registrado com sucesso!',
             'mesa': pedido.mesa,
-            'status': pedido.status,
+            'status_pedido': pedido.status,
             'dataCriado': pedido.dataCriado,
             'funcionario_id': pedido.funcionario_id
         }
@@ -728,7 +727,7 @@ def updatePedido(id):
             'status': 'success',
             'message': 'Pedido atualizado com sucesso!',
             'mesa': pedido.mesa,
-            'status': pedido.status,
+            'status_pedido': pedido.status,
             'dataCriado': pedido.dataCriado,
             'funcionario_id': pedido.funcionario_id
         }

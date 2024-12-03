@@ -1,5 +1,5 @@
 #importar bibliotecas
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, DateTime, Enum
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, DateTime, Enum, Float
 from sqlalchemy.orm import sessionmaker, scoped_session, relationship, declarative_base
 
 #configurar banco
@@ -89,7 +89,7 @@ class Produto(Base):
     nome = Column(String(40), nullable=False)
     descricao = Column(String(40), nullable=False)
     imagem = Column(String(40), nullable=False)
-    preco = Column(Integer, nullable=False)
+    preco = Column(Float, nullable=False)
     categoria_id = Column(Integer, ForeignKey('categoria.id'))
 
     def save(self):
@@ -138,7 +138,7 @@ class Pedido(Base):
     id = Column(Integer, primary_key=True)
     mesa = Column(String(10), nullable=False)
     status = Column(String(40), nullable=False, default="EM_ESPERA")
-    dataCriado = Column(DateTime, nullable=False)
+    dataCriado = Column(String, nullable=False)
     funcionario_id = Column(Integer, ForeignKey('funcionario.id'))
     relationship(Funcionario)
 
