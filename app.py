@@ -215,17 +215,17 @@ def createCategoria():
 def updateCategoria(id):
     try:
         categoria = select(Categoria).where(Categoria.id == id)
-        admin = db_session.execute(categoria).scalar()
+        categoria = db_session.execute(categoria).scalar()
         if request.form['nome']:
-            admin.nome = request.form['nome']
+            categoria.nome = request.form['nome']
         if request.form['icone']:
-            admin.email = request.form['icone']
-        admin.save()
+            categoria.email = request.form['icone']
+        categoria.save()
         final = {
             'status': 'success',
             'message': 'Categoria atualizado com sucesso!',
-            'nome': admin.nome,
-            'icone': admin.email,
+            'nome': categoria.nome,
+            'icone': categoria.icone,
         }
         return Response(
             response=json.dumps(final),
@@ -263,7 +263,6 @@ def deleteCategoria(id):
         return Response(
             response=json.dumps(final)
         )
-
 
 #  pedro produto
 @app.route('/produtos', methods=['GET'])
@@ -394,9 +393,9 @@ def deleteProduto(id):
         produto = db_session.execute(produto).scalar()
         final = {
             'status': 'sucess',
-            'message': categoria.nome + 'foi excluida'
+            'message': produto.nome + 'foi excluida'
         }
-        categoria.delete()
+        produto.delete()
         return Response(
             response=json.dumps(final)
         )
@@ -408,10 +407,6 @@ def deleteProduto(id):
         return Response(
             response=json.dumps(final)
         )
-
-
-
-
 
 
 # VINICIUS HENRIQUE
@@ -681,6 +676,124 @@ def deleteIngrediente(id):
         return Response(
             response=json.dumps(final)
         )
+
+@app.route('/pedido', methods=['POST'])
+def createPedido():
+    try:
+        pedido = Pedido(
+            mesa=request.form['mesa'],
+            status=request.form['status'],
+            dataCriado=request.form['dataCriado'],
+            funcionario_id=request.form['funcionario_id'],
+
+        )
+        pedido.save()
+        final = {
+            'status': 'success',
+            'message': 'Pedido registrado com sucesso!',
+            'mesa': pedido.mesa,
+            'status': pedido.status,
+            'dataCriado': pedido.dataCriado,
+            'funcionario_id': pedido.funcionario_id
+        }
+        return Response(
+            response=json.dumps(final),
+            status=201,
+            mimetype='application/json'
+        )
+    except Exception as e:
+        final = {
+            'status': 'error',
+            'message': str(e),
+        }
+        return Response(
+            response=json.dumps(final),
+        )
+
+@app.route('/pedido/<int:id>', methods=['PUT'])
+def updatePedido(id):
+    try:
+        pedido = select(Pedido).where(Pedido.id == id)
+        pedido = db_session.execute(pedido).scalar()
+        if request.form['mesa']:
+            pedido.mesa = request.form['mesa']
+        if request.form['status']:
+            pedido.status = request.form['status']
+        if request.form['dataCriado']:
+            pedido.dataCriado = request.form['dataCriado']
+        if request.form['funcionario_id']:
+            pedido.funcionario_id = request.form['funcionario_id']
+        pedido.save()
+        final = {
+            'status': 'success',
+            'message': 'Pedido atualizado com sucesso!',
+            'mesa': pedido.mesa,
+            'status': pedido.status,
+            'dataCriado': pedido.dataCriado,
+            'funcionario_id': pedido.funcionario_id
+        }
+        return Response(
+            response=json.dumps(final),
+            status=200,
+            mimetype='application/json'
+        )
+    except Exception as e:
+        final = {
+            'status': 'error',
+            'message': str(e)
+        }
+        return Response(
+            response=json.dumps(final)
+        )
+
+
+@app.route('/pedido/<int:id>', methods=['GET'])
+def listPedidoById(id):
+    try:
+        pedido_sql = select(Pedido).where(Pedido.id == id)
+        pedido = db_session.execute(pedido_sql).fetchone()
+        result = []
+        for consulta in pedido:
+            result.append(consulta.serialize())
+        final = json.dumps(result)
+        return Response(
+            response=final,
+            status=200,
+            mimetype='application/json'
+        )
+    except Exception as e:
+        final = {
+            'status': 'error',
+            'message': str(e)
+        }
+        return Response(
+            response=json.dumps(final)
+        )
+
+@app.route('/pedido', methods=['GET'])
+def ListAllPedido():
+    try:
+        pedido = select(Pedido).select_from(Pedido)
+        print(Pedido)
+        pedido = db_session.execute(pedido).scalars()
+        result = []
+        for consulta in pedido:
+            result.append(consulta.serialize())
+        final = json.dumps(result)
+        return Response(
+            final,
+            status=200,
+            mimetype='application/json'
+        )
+    except Exception as e:
+        final = {
+            'status': 'error',
+            'message': str(e)
+        }
+        return Response(
+            response=json.dumps(final)
+        )
+
 
 
 
