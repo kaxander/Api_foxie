@@ -5,7 +5,7 @@ from enum import Enum as PyEnum
 from datetime import datetime
 
 #configurar banco
-engine = create_engine('postgresql://postgres.wyekqwsnuvyrjpdvmxkl:galuma729863@aws-0-sa-east-1.pooler.supabase.com:6543/postgres')
+engine = create_engine('postgres://postgres.ajgtxesvomfwgnrouwry:gB4xyE5NPyKdGtgv@aws-0-sa-east-1.pooler.supabase.com:6543/postgres?sslmode=require&supa=base-pooler.x')
 db_session = scoped_session(sessionmaker(bind=engine))
 
 Base = declarative_base()
