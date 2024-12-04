@@ -8,8 +8,7 @@ Flask-SQLAlchemy==3.1.1
 itsdangerous==2.2.0
 Jinja2==3.1.4
 MarkupSafe==3.0.2
-psycopg2==2.9.10
-psycopg2-binary==2.9.10
+psycopg2-binary==2.9.10  # Deixe apenas esta linha
 PyJWT==2.10.1
 pytz==2024.2
 setuptools==75.6.0

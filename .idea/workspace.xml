@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3fd98be9-5161-4793-b43b-b958ac21a8f5" name="Changes" comment="corringindo a url do banco dnv">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
-    </list>
+    <list default="true" id="3fd98be9-5161-4793-b43b-b958ac21a8f5" name="Changes" comment="Corrigida URL de conexão com o banco de dados novamente" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -112,7 +109,7 @@
       <workItem from="1733261348536" duration="33693000" />
       <workItem from="1733322888703" duration="737000" />
       <workItem from="1733323644873" duration="2122000" />
-      <workItem from="1733325942738" duration="2412000" />
+      <workItem from="1733325942738" duration="2769000" />
     </task>
     <task id="LOCAL-00001" summary="api ultimo">
       <option name="closed" value="true" />
@@ -154,7 +151,23 @@
       <option name="project" value="LOCAL" />
       <updated>1733328049888</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Corrigida URL de conexão com o banco de dados novamente">
+      <option name="closed" value="true" />
+      <created>1733328525755</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1733328525755</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Corrigida URL de conexão com o banco de dados novamente">
+      <option name="closed" value="true" />
+      <created>1733328539262</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1733328539262</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,7 +182,8 @@
     <MESSAGE value="Api final2" />
     <MESSAGE value="Corrigido a URL do banco de dados para o deploy no Vercel" />
     <MESSAGE value="corringindo a url do banco dnv" />
-    <option name="LAST_COMMIT_MESSAGE" value="corringindo a url do banco dnv" />
+    <MESSAGE value="Corrigida URL de conexão com o banco de dados novamente" />
+    <option name="LAST_COMMIT_MESSAGE" value="Corrigida URL de conexão com o banco de dados novamente" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Api$Api.coverage" NAME="Api Coverage Results" MODIFIED="1733253877694" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
