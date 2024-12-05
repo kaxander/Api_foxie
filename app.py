@@ -179,11 +179,14 @@ def loginAdmin():
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
 
-        return Response(
-            response=json.dumps({'status': 'success', 'token': token}),
+        response = Response(
+            response=json.dumps({'status': 'success'}),
             status=200,
             mimetype='application/json'
         )
+
+        response.set_cookie('jwt_token', token, max_age=60*60, httponly=True)
+        return response
 
     except Exception as e:
         return Response(
