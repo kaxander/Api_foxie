@@ -185,7 +185,7 @@ def loginAdmin():
             mimetype='application/json'
         )
 
-        response.set_cookie('jwt_token', token, max_age=60*60, httponly=True)
+        response.set_cookie('jwt_token', token, max_age=60*60, httponly=True, samesite='None')
         return response
 
     except Exception as e:
