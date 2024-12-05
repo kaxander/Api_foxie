@@ -78,7 +78,7 @@ def listAdminById(id):
 @app.route('/admin', methods=['POST'])
 def createAdmin():
     try:
-        admin_data = request.form
+        admin_data = request.get_json()
         admin = Admin(
             nome=admin_data['nome'],
             email=admin_data['email'],
