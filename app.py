@@ -8,7 +8,7 @@ from flask_cors import CORS
 from model import *
 
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "https://localhost:5173/", "methods": ["GET", "POST", "PUT", "DELETE"], "allow_headers": ["Content-Type"], "supports_credentials": True}})
+CORS(app, resources={r"/api/*": {"origins": "*", "methods": ["GET", "POST", "PUT", "DELETE"], "allow_headers": ["Content-Type"], "supports_credentials": True}})
 
 
 SECRET_KEY = 'your_secret_key'
